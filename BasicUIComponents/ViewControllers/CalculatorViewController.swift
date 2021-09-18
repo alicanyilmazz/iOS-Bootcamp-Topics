@@ -41,7 +41,21 @@ class CalculatorViewController: UIViewController {
     }
     
     
+    @IBAction func btnAddClicked(_ sender: UIButton) {
+        print("add clicked!")
+    }
     
+    @IBAction func btnSubClicked(_ sender: UIButton) {
+        print("sub clicked!")
+    }
+    
+    @IBAction func btnMultiplyClicked(_ sender: UIButton) {
+        print("mul clicked!")
+    }
+    
+    @IBAction func btnDivideClicked(_ sender: UIButton) {
+        print("divide clicked!")
+    }
     
     /*
     // MARK: - Navigation
