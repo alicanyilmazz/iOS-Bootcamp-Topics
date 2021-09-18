@@ -10,7 +10,8 @@ import UIKit
 class CalculatorViewController: UIViewController {
 
     @IBOutlet weak var resultLabel: UILabel!
-    
+    var firstNumber : Double = 0
+    var secondNumber : Double = 0
     //@IBOutlet var digitButtons: [UIButton]!
     
     override func viewDidLoad() {
@@ -20,8 +21,13 @@ class CalculatorViewController: UIViewController {
     }
     
     private var isTyping: Bool = false
+    private var isProcessClicked : Bool = false
     
     @IBAction func digitButtonTapped(_ sender: UIButton) {
+        if isProcessClicked {
+            resultLabel.text = ""
+        }
+        
         let digit = String(sender.tag)
         let displayText = resultLabel.text ?? ""
 
@@ -41,21 +47,7 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    @IBAction func btnAddClicked(_ sender: UIButton) {
-        print("add clicked!")
-    }
-    
-    @IBAction func btnSubClicked(_ sender: UIButton) {
-        print("sub clicked!")
-    }
-    
-    @IBAction func btnMultiplyClicked(_ sender: UIButton) {
-        print("mul clicked!")
-    }
-    
-    @IBAction func btnDivideClicked(_ sender: UIButton) {
-        print("divide clicked!")
-    }
+
     
     /*
     // MARK: - Navigation
