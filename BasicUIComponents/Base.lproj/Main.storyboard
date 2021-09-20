@@ -25,6 +25,43 @@
             </objects>
             <point key="canvasLocation" x="-1230" y="-37"/>
         </scene>
+        <!--Slider View Controller-->
+        <scene sceneID="Go4-sf-g7t">
+            <objects>
+                <viewController id="ZY0-lM-Sar" customClass="SliderViewController" customModule="BasicUIComponents" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQ5-s7-W3x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10" translatesAutoresizingMaskIntoConstraints="NO" id="qBT-yM-oBn">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="mhy-sc-tPS">
+                                <rect key="frame" x="146" y="798" width="122" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" red="0.2423534393" green="0.54009139539999995" blue="0.67486298079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="1" green="0.62386004959999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SAq-2u-cWE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qBT-yM-oBn" firstAttribute="leading" secondItem="SAq-2u-cWE" secondAttribute="leading" id="1ZB-Wc-3rB"/>
+                            <constraint firstItem="SAq-2u-cWE" firstAttribute="bottom" secondItem="qBT-yM-oBn" secondAttribute="bottom" id="2vc-jT-Z65"/>
+                            <constraint firstItem="qBT-yM-oBn" firstAttribute="top" secondItem="SAq-2u-cWE" secondAttribute="top" id="Gz8-35-Fkf"/>
+                            <constraint firstItem="SAq-2u-cWE" firstAttribute="trailing" secondItem="qBT-yM-oBn" secondAttribute="trailing" id="yvP-cL-4RN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uwq-ps-9Kl"/>
+                    <connections>
+                        <outlet property="imageView" destination="qBT-yM-oBn" id="6Ps-zC-2uQ"/>
+                        <outlet property="pageControl" destination="mhy-sc-tPS" id="Aux-3u-13q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pRJ-lQ-YUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4013" y="667"/>
+        </scene>
         <!--Calculator View Controller-->
         <scene sceneID="2Bz-Tp-oac">
             <objects>
@@ -230,6 +267,18 @@
                                     <constraint firstAttribute="trailing" secondItem="F1H-gR-RB5" secondAttribute="trailing" id="kyc-nB-aEw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gr-g6-Dpp">
+                                <rect key="frame" x="152" y="530" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="lblGoClicked:" destination="4s4-lV-0hm" eventType="touchUpInside" id="Nxa-hS-gpw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gbc-6o-eUM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -244,12 +293,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="YCm-JG-3Wy"/>
                     <connections>
+                        <outlet property="lblGo" destination="6Gr-g6-Dpp" id="6WC-2a-yDf"/>
                         <outlet property="resultLabel" destination="qT2-Cq-y9U" id="8YS-t0-dIL"/>
+                        <segue destination="ZY0-lM-Sar" kind="show" identifier="slider" id="wx7-Vq-3f2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1W-iv-iz7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3184" y="682"/>
+            <point key="canvasLocation" x="-3184.057971014493" y="681.69642857142856"/>
         </scene>
         <!--Button View Controller-->
         <scene sceneID="s4T-CS-3hc">
@@ -918,6 +969,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="10" width="1770" height="1017"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -935,6 +987,9 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

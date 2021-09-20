@@ -16,15 +16,18 @@ class CalculatorViewController: UIViewController {
     var _lock : Bool = true
     var lock : Bool = true
 
+    @IBOutlet weak var lblGo: UIButton!
     //@IBOutlet var digitButtons: [UIButton]!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+   
     }
-    
-
     
     @IBAction func digitButtonTapped(_ sender: UIButton) {
         lock = false
@@ -88,7 +91,10 @@ class CalculatorViewController: UIViewController {
         }
     }
 
-
+    @IBAction func lblGoClicked(_ sender: UIButton) {
+       performSegue(withIdentifier: "slider", sender: self)
+    }
+    
 
 }
 
