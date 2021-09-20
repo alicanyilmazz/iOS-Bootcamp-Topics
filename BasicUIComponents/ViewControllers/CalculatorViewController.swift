@@ -12,6 +12,10 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     var firstNumber : Double = 0
     var secondNumber : Double = 0
+    var isFirstEnterance : Bool = true
+    var _lock : Bool = true
+    var lock : Bool = true
+
     //@IBOutlet var digitButtons: [UIButton]!
     
     override func viewDidLoad() {
@@ -20,43 +24,71 @@ class CalculatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    private var isTyping: Bool = false
-    private var isProcessClicked : Bool = false
+
     
     @IBAction func digitButtonTapped(_ sender: UIButton) {
-        if isProcessClicked {
-            resultLabel.text = ""
-        }
-        
+        lock = false
         let digit = String(sender.tag)
         let displayText = resultLabel.text ?? ""
-
-        
-        if isTyping {
-            resultLabel.text = displayText + digit
-        } else {
+        if isFirstEnterance {
+            resultLabel.text = ""
             resultLabel.text = digit
-            isTyping.toggle()
+            isFirstEnterance = false
+        } else {
+            resultLabel.text = displayText + digit
+        }
+        
+    }
+    
+
+    @IBAction func processButtonTapped(_ sender: UIButton) {
+        if sender.tag == 14 {
+            if !_lock{
+                MathOperations.secondNumber = Double(resultLabel.text!) ?? 0
+                resultLabel.text = String(MathOperations.calculate(number1: MathOperations.firstNumber, number2: MathOperations.secondNumber))
+                isFirstEnterance = true
+            }
+        }
+        if sender.tag == 13 {
+            if !lock {
+                MathOperations.firstNumber = Double(resultLabel.text!) ?? 0
+                resultLabel.text = "0"
+                MathOperations.operationType = Process.divide
+                lock = true
+                _lock = false
+            }
+        }
+        if sender.tag == 12 {
+            if !lock {
+                MathOperations.firstNumber = Double(resultLabel.text!) ?? 0
+                resultLabel.text = "0"
+                MathOperations.operationType = Process.multiply
+                lock = true
+                _lock = false
+            }
+          
+        }
+        if sender.tag == 11 {
+            if !lock {
+                MathOperations.firstNumber = Double(resultLabel.text!) ?? 0
+                resultLabel.text = "0"
+                MathOperations.operationType = Process.subtract
+                lock = true
+                _lock = false
+            }
+        }
+        if sender.tag == 10 {
+            if !lock {
+                MathOperations.firstNumber = Double(resultLabel.text!) ?? 0
+                resultLabel.text = "0"
+                MathOperations.operationType = Process.add
+                lock = true
+                _lock = false
+            }
         }
     }
-    
-    @IBAction func actionButtonTapped(_ sender: UIButton) {
-        
-        let value = NSString(string: resultLabel.text ?? "0").doubleValue
-        resultLabel.text = String(sqrt(value))
-    }
-    
-    
 
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
